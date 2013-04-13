@@ -2,7 +2,7 @@ var resize_to_height = true;
 
 // Determine which angle to rotate the page to
 var rotation = localStorage["angle"];
-
+console.log(localStorage);
 // Clears any previous rotations
 function rotate_reset() {
 	// Remove custom CSS from inner wrappers
@@ -65,6 +65,17 @@ function rotate(angle) {
 
 		case "90":
 
+			var body_height = $('body').width();
+			var window_width = $(window).height();
+
+			body_height += 15; // for the scrollbar
+
+			// Apply the appropriate style
+			wrap_rotate.attr('style', "overflow-y: hidden; height: " + window_width + "px;");
+			wrap_rotate_inner.attr('style', "position: relative; left: 100%; -webkit-transform: rotateZ(90deg); -webkit-transform-origin-x: 0%; -webkit-transform-origin-y: 0%; float: right; " + (resize_to_height ? "width: " + window_width + "px;" : "") );
+
+
+
 			break;
 
 		case "0":
@@ -79,8 +90,6 @@ rotate(rotation);
 
 // Bind rotation keypress
 $(document).keydown(function(e){
-	
-	console.log(e);
 
 	// Require pressing shift+ctrl+arrow key
 	//if(!(e.ctrlKey && e.shiftKey)) { return; }

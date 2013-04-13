@@ -31,6 +31,7 @@ function restore_options() {
   if (!favorite) {
     return;
   }
+  
   // Find the radio button with the correct value, otherwise exit
   var radiobutton = jQuery("input[name='select_angle'][value="+favorite+"]");
   if(!radiobutton.length) {

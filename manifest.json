@@ -6,7 +6,7 @@
   "version": "1.0",
 
   "permissions": [
-    "https://secure.flickr.com/"
+    //"storage"
   ],
   
   "options_page": "options.html",
