@@ -1,3 +1,4 @@
+var resize_to_height = true;
 
 // Determine which angle to rotate the page to
 var rotation = localStorage["angle"];
@@ -44,12 +45,14 @@ function rotate(angle) {
 	switch(angle) {
 		case "270":
 			
-			var my_height = $('body').width();
-			my_height += 15; // for the scrollbar
-			
+			var body_height = $('body').width();
+			var window_width = $(window).height();
+
+			body_height += 15; // for the scrollbar
+
 			// Apply the appropriate style
-			wrap_rotate.attr('style', "overflow-y: hidden; height: " + my_height + "px;");
-			wrap_rotate_inner.attr('style', "position: relative; left: -100%; -webkit-transform: rotateZ(-90deg); -webkit-transform-origin-x: 100%; -webkit-transform-origin-y: 0%; float: right;");
+			wrap_rotate.attr('style', "overflow-y: hidden; height: " + window_width + "px;");
+			wrap_rotate_inner.attr('style', "position: relative; left: -100%; -webkit-transform: rotateZ(-90deg); -webkit-transform-origin-x: 100%; -webkit-transform-origin-y: 0%; float: right; " + (resize_to_height ? "width: " + window_width + "px;" : "") );
 
 			return;
 
