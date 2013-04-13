@@ -1,8 +1,36 @@
 var resize_to_height = true;
 
 // Determine which angle to rotate the page to
-var rotation = localStorage["angle"];
-console.log(localStorage);
+//var rotation = localStorage["angle"];
+//var rotation = getLocalStorageKey("angle");
+
+// Check if enabled
+console.log(localStorage["angle"]);
+getLocalStorage(function(response) { 
+	// Check if enabled
+	if(response.data["enabled"] == "true") { 
+		// Plugin is enabled, rotate to the saved angle
+		rotate(response.data["angle"]);
+	}
+});
+
+// getLocalStorageKey("enabled", function(response) {
+// 	if (response.data == "true") {
+// 		// We are enabled, continue
+
+// 		// Tell the browser to rotate to whichever angle is stored in localStorage (via background.js)
+// 		getLocalStorageKey("angle", function(response) { alert('response.data = ' + response.data); rotate(response.data); });
+// 	}
+// });
+
+function getLocalStorage(callback) {
+	chrome.extension.sendRequest({method: "getLocalStorage"}, callback);
+}
+
+function getLocalStorageKey(userkey, callback) {
+	chrome.extension.sendRequest({method: "getLocalStorageKey", key: userkey}, callback);
+}
+
 // Clears any previous rotations
 function rotate_reset() {
 	// Remove custom CSS from inner wrappers
@@ -27,11 +55,7 @@ function rotate(angle) {
 		var wrap_rotate;
 		var wrap_rotate_inner;
 
-		if(selector_exists("#wrap_rotate")) {
-			// Fetch the existing elements
-			wrap_rotate 		= $('#wrap_rotate');
-			wrap_rotate_inner	= $('#wrap_rotate_inner');
-		} else {
+		if(!selector_exists("#wrap_rotate")) {
 			// Create the elements
 			wrap_rotate 		= $('<div />', {id: "wrap_rotate"});
 			wrap_rotate_inner	= $('<div />', {id: "wrap_rotate_inner"});;
@@ -39,6 +63,11 @@ function rotate(angle) {
 			// Append to the body
 			$('body').wrapInner(wrap_rotate_inner).wrapInner(wrap_rotate);
 		}
+
+		// Fetch the existing elements
+		wrap_rotate 		= $('#wrap_rotate');
+		wrap_rotate_inner	= $('#wrap_rotate_inner');
+	
 	}
 
 	// Handle the angle
@@ -86,7 +115,7 @@ function rotate(angle) {
 }
 
 // Initial rotation
-rotate(rotation);
+// rotate(rotation);
 
 // Bind rotation keypress
 $(document).keydown(function(e){
