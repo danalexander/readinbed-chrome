@@ -10,9 +10,10 @@
   ],
   
   "options_page": "options.html",
-  "content_scripts": {
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
     "js": ["jquery-1.9.1.min.js", "inject_rotate.js"]
-  }
+  }],
 
   "browser_action": {
     "default_icon": "icon.png" //,
