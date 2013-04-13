@@ -22,14 +22,13 @@ function rotate(angle) {
 			var my_height = $('body').width();
 
 			
-
 			//$('html').css('overflow-y', 'hidden').css('height', my_height);
-			$('body').css('position', 'relative').css('left', '-100%').css('-webkit-transform', 'rotateZ(-90deg)').css('-webkit-transform-origin-x', '100%').css('-webkit-transform-origin-y', '0%').css('float', 'right');
+			$('body').css('overflow-y', 'hidden').css('height', my_height);
 			//var innerDiv = $('<div />', {id: 'wrapInner', style: 'overflow-y: hidden; height: ' + my_height + ';'});
 			var innerDivExists = $('#readinbed_wrapInner').length ? true : false;
 			var innerDiv = ( innerDivExists ? $('#readinbed_wrapInner') : $('<div id="readinbed_wrapInner" />') );
 
-			innerDiv.css('overflow-y', 'hidden').css('width', my_height);
+			innerDiv.css('position', 'relative').css('left', '-100%').css('-webkit-transform', 'rotateZ(-90deg)').css('-webkit-transform-origin-x', '100%').css('-webkit-transform-origin-y', '0%').css('float', 'right');
 			if (!innerDivExists) { $('body').wrapInner(innerDiv); }
 			
 			break;
