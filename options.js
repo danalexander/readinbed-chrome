@@ -2,6 +2,8 @@
 
 // Saves options to localStorage.
 function save_options() {
+  // Angle setting
+  
   //var select = document.getElementById("select_angle");
   //var select = document.readinbedForm["select_angle"];
   //var select = $("select_angle",document["readinbedForm"])
@@ -9,6 +11,10 @@ function save_options() {
   //var angle = select.children[select.selectedIndex].value;
   var angle = select.val();
   localStorage["angle"] = angle;
+
+  // Enabled setting
+  var enabled = $('#enabled').is(':checked');
+  localStorage["enabled"] = enabled;
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -34,6 +40,13 @@ function restore_options() {
   // Set the checked attribute
   radiobutton.attr('checked', 'true');
   
+  // Set enabled / disabled
+  var enabled = localStorage["enabled"];
+  if(enabled=="true") { // localStorage stores true boolean as "true" string...
+    $('#enabled').attr('checked', 'true');
+  }
+
+
   // var select = document.getElementById("select_angle");
   // for (var i = 0; i < select.children.length; i++) {
   //   var child = select.children[i];

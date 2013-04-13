@@ -11,7 +11,7 @@
   
   "options_page": "options.html",
   "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
+    "matches": ["*://*/*"], // Matches http://*/*, https://*/*
     "js": ["jquery-1.9.1.min.js", "inject_rotate.js"]
   }],
 
