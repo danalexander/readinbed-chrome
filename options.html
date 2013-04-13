@@ -3,6 +3,12 @@
 
 <script src="clicks.js"></script>
 <style type="text/css">
+
+  .warning-beta {
+    position: absolute;
+    padding-left: 90px;
+  }
+
   .image-title {
     display: inline;
   }
@@ -91,7 +97,7 @@ body
 
 <body>  
   <form name="readinbedForm">
-    Click on the Read In Bed icon to enable / disable.
+    Click on the <img src="icon.png" style="width: 16px; height: 16px;" /> <b>Read In Bed</b> icon in the Chrome toolbar to enable / disable.
     <div id="enablebox" style="display: none;">
       <label for="enable">Enable</label>
       <input type="checkbox" name="enabled" id="enabled" value="on">
@@ -114,11 +120,14 @@ body
         <!-- <div class="image-title">180 Degrees</div> -->
       </label>
       
-            <!-- 90 Degrees -->
+      <!-- 90 Degrees -->
       <input type="radio" name="select_angle" id="90" value="90" hidden="true">
       <label for="left">
-        <img id="90img" width="280px" src="images/zuck_right.png" />
+          <span class="warning-beta">EXPERIMENTAL</span>
+          <img id="90img" width="280px" src="images/zuck_right.png" />
+          
         <!-- <div class="image-title">90 Degrees</div> -->
+
       </label>
 
 

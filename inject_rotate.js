@@ -111,7 +111,7 @@ function rotate(angle) {
 
 		case "0":
 			// Straight up, don't rotate. Do nothing!
-
+			
 			break;
 	}
 }
