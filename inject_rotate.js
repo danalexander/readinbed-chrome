@@ -20,37 +20,43 @@ function rotate(angle) {
 	// Reset before changing the angle
 	rotate_reset();
 
+	// Do not create the wrappers if the default angle is zero
+	if(angle != "0") {
+		// Create the wrappers
+		var wrap_rotate;
+		var wrap_rotate_inner;
+
+		if(selector_exists("#wrap_rotate")) {
+			// Fetch the existing elements
+			wrap_rotate 		= $('#wrap_rotate');
+			wrap_rotate_inner	= $('#wrap_rotate_inner');
+		} else {
+			// Create the elements
+			wrap_rotate 		= $('<div />', {id: "wrap_rotate"});
+			wrap_rotate_inner	= $('<div />', {id: "wrap_rotate_inner"});;
+
+			// Append to the body
+			$('body').wrapInner(wrap_rotate_inner).wrapInner(wrap_rotate);
+		}
+	}
+
 	// Handle the angle
 	switch(angle) {
 		case "270":
 			
 			var my_height = $('body').width();
+			my_height += 15; // for the scrollbar
 			
-			var wrap_rotate;
-			var wrap_rotate_inner;
-
-			if(selector_exists("#wrap_rotate")) {
-				// Fetch the existing elements
-				wrap_rotate 		= $('#wrap_rotate');
-				wrap_rotate_inner	= $('#wrap_rotate_inner');
-			} else {
-				// Create the elements
-				wrap_rotate 		= $('<div />', {id: "wrap_rotate"});
-				wrap_rotate_inner	= $('<div />', {id: "wrap_rotate_inner"});;
-
-				// Append to the body
-				$('body').wrapInner(wrap_rotate_inner).wrapInner(wrap_rotate);
-			}
-
 			// Apply the appropriate style
-			wrap_rotate.attr('style', "overflow-y: hidden; height: " + my_height);
-			wrap_rotate.attr('style', "position: relative; left: -100%; -webkit-transform: rotateZ(-90deg); -webkit-transform-origin-x: 100%; -webkit-transform-origin-y: 0%; float: right;");
+			wrap_rotate.attr('style', "overflow-y: hidden; height: " + my_height + "px;");
+			wrap_rotate_inner.attr('style', "position: relative; left: -100%; -webkit-transform: rotateZ(-90deg); -webkit-transform-origin-x: 100%; -webkit-transform-origin-y: 0%; float: right;");
 
 			return;
 
 		case "180":
 			// Rotate around 180 degrees
-			$('body').css('-webkit-transform', 'rotateZ(180deg)').css('-webkit-transform-origin-x', '50%').css('-webkit-transform-origin-y', '50%');
+			wrap_rotate.attr('style', "-webkit-transform: rotateZ(180deg); -webkit-transform-origin-x: 50%; -webkit-transform-origin-y: 50%;");
+			//$('body').css('-webkit-transform', 'rotateZ(180deg)').css('-webkit-transform-origin-x', '50%').css('-webkit-transform-origin-y', '50%');
 
 			break;
 
@@ -87,7 +93,7 @@ $(document).keydown(function(e){
         case 38: // up
         	degree = "0";	// Rotate 0 degrees
         	break;
-        
+
         case 39: // right
         	degree = "90";	// Rotate 90 degrees
         	break;
