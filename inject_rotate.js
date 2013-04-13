@@ -93,7 +93,9 @@ function rotate(angle) {
 			break;
 
 		case "90":
+			// fetch height before, set as width of wrap_rotate after
 
+			var body_width = $('body').height();
 			var body_height = $('body').width();
 			var window_width = $(window).height();
 
@@ -104,7 +106,7 @@ function rotate(angle) {
 			wrap_rotate_inner.attr('style', "position: relative; left: 100%; -webkit-transform: rotateZ(90deg); -webkit-transform-origin-x: 0%; -webkit-transform-origin-y: 0%; float: right; " + (resize_to_height ? "width: " + window_width + "px;" : "") );
 
 
-
+			wrap_rotate.css('width', body_width + 'px');
 			break;
 
 		case "0":
@@ -121,8 +123,8 @@ function rotate(angle) {
 $(document).keydown(function(e){
 
 	// Require pressing shift+ctrl+arrow key
-	//if(!(e.ctrlKey && e.shiftKey)) { return; }
-	if(!(e.shiftKey)) { return; }
+	if(!(e.ctrlKey && e.shiftKey)) { return; }
+	//if(!(e.shiftKey)) { return; }
 
 	var degree;
 	// Handle rotations

@@ -18,6 +18,11 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 	// Toggle enabled / disabled
 	localStorage["enabled"] = !is_enabled;
 
+	// Call setEnable to set the proper icon
+	setEnable(is_enabled);
+})
+
+function setEnable(is_enabled) {
 	if(is_enabled) {
 		// It's enabled, disable it
 		chrome.browserAction.setIcon({path:"icon_disabled.png"});
@@ -26,4 +31,4 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 		// It's disabled
 		chrome.browserAction.setIcon({path:"icon.png"});
 	}
-})
+}
