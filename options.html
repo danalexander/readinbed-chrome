@@ -1,5 +1,7 @@
 <html>
 <head><title>Read In Bed Extension Options</title>
+
+<script src="clicks.js"></script>
 <style type="text/css">
   .image-title {
     display: inline;
@@ -100,21 +102,21 @@ body
       <!-- 270 Degrees -->
       <input type="radio" name="select_angle" id="270" value="270" hidden="true">
       <label for="left">
-        <img id="270img" width="280px" src="images/zuck_left.png" onclick="document.getElementById('270').checked=true; this.src='images/zuck_left_high.jpg'; document.getElementById('180img').src='images/zuck.png'; document.getElementById('90img').src='images/zuck_right.png';"/>
+        <img id="270img" width="280px" src="images/zuck_left.png" />
         <!-- <div class="image-title">270 Degrees</div> -->
       </label>
       
       <!-- 180 Degrees -->
       <input type="radio" name="select_angle" id="180" value="180" hidden="true">
       <label for="left">
-        <img id="180img" width="280px" src="images/zuck.png"  onclick="document.getElementById('180').checked=true; this.src='images/zuck_high.jpg'; document.getElementById('270img').src='images/zuck_left.png'; document.getElementById('90img').src='images/zuck_right.png';" />
+        <img id="180img" width="280px" src="images/zuck.png" />
         <!-- <div class="image-title">180 Degrees</div> -->
       </label>
       
             <!-- 90 Degrees -->
       <input type="radio" name="select_angle" id="90" value="90" hidden="true">
       <label for="left">
-        <img id="90img" width="280px" src="images/zuck_right.png" onclick="document.getElementById('90').checked=true; this.src='images/zuck_right_high.jpg'; document.getElementById('270img').src='images/zuck_left.png'; document.getElementById('180img').src='images/zuck.png';" />
+        <img id="90img" width="280px" src="images/zuck_right.png" />
         <!-- <div class="image-title">90 Degrees</div> -->
       </label>
 
