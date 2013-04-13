@@ -2,8 +2,12 @@
 
 // Saves options to localStorage.
 function save_options() {
-  var select = document.getElementById("select_angle");
-  var angle = select.children[select.selectedIndex].value;
+  //var select = document.getElementById("select_angle");
+  //var select = document.readinbedForm["select_angle"];
+  //var select = $("select_angle",document["readinbedForm"])
+  var select = jQuery("input[name='select_angle']").filter(':checked');
+  //var angle = select.children[select.selectedIndex].value;
+  var angle = select.val();
   localStorage["angle"] = angle;
 
   // Update status to let user know options were saved.
@@ -16,18 +20,28 @@ function save_options() {
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
+  // Load the setting
   var favorite = localStorage["angle"];
   if (!favorite) {
     return;
   }
-  var select = document.getElementById("select_angle");
-  for (var i = 0; i < select.children.length; i++) {
-    var child = select.children[i];
-    if (child.value == favorite) {
-      child.selected = "true";
-      break;
-    }
+  // Find the radio button with the correct value, otherwise exit
+  var radiobutton = jQuery("input[name='select_angle'][value="+favorite+"]");
+  if(!radiobutton.length) {
+    return;
   }
+
+  // Set the checked attribute
+  radiobutton.attr('checked', 'true');
+  
+  // var select = document.getElementById("select_angle");
+  // for (var i = 0; i < select.children.length; i++) {
+  //   var child = select.children[i];
+  //   if (child.value == favorite) {
+  //     child.selected = "true";
+  //     break;
+  //   }
+  // }
 }
 document.addEventListener('DOMContentLoaded', restore_options);
 document.querySelector('#save').addEventListener('click', save_options);
