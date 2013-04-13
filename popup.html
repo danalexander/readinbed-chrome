@@ -8,6 +8,7 @@
         overflow-x: hidden;
       }
 
+      /*
       img {
         margin: 5px;
         border: 2px solid black;
@@ -15,6 +16,7 @@
         width: 75px;
         height: 75px;
       }
+      */
     </style>
 
     <!--
@@ -26,6 +28,19 @@
     <script src="popup.js"></script>
   </head>
   <body>
+    <h1>Read In Bed</h1>
+    <div id="enablebox">
+      <label for="enable">Enable</label>
+      <input type="checkbox" name="enable" id="enable" value="on">
+    </div>
+
+    <div id="anglebox">
+      <select>
+        <option>90 degrees</option>
+        <option>180 degrees</option>
+        <option>270 degrees</option>
+      </select>
+    </div>
   </body>
 </html>
 
