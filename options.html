@@ -1,15 +1,22 @@
 <html>
-<head><title>My Test Extension Options</title></head>
+<head><title>Read In Bed Extension Options</title></head>
 
 <body>
 
-Favorite Color:
-<select id="color">
- <option value="red">red</option>
- <option value="green">green</option>
- <option value="blue">blue</option>
- <option value="yellow">yellow</option>
-</select>
+  <h1>Read In Bed - Options</h1>
+  
+  <div id="enablebox">
+    <label for="enable">Enable</label>
+    <input type="checkbox" name="enable" id="enable" value="on">
+  </div>
+
+  <div id="anglebox">
+    <select id="select_angle">
+      <option value="90">90 degrees</option>
+      <option value="180">180 degrees</option>
+      <option value="270">270 degrees</option>
+    </select>
+  </div>
 
 <br>
 <div id="status"></div>

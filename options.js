@@ -2,9 +2,9 @@
 
 // Saves options to localStorage.
 function save_options() {
-  var select = document.getElementById("color");
-  var color = select.children[select.selectedIndex].value;
-  localStorage["favorite_color"] = color;
+  var select = document.getElementById("select_angle");
+  var angle = select.children[select.selectedIndex].value;
+  localStorage["angle"] = angle;
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -16,11 +16,11 @@ function save_options() {
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
-  var favorite = localStorage["favorite_color"];
+  var favorite = localStorage["angle"];
   if (!favorite) {
     return;
   }
-  var select = document.getElementById("color");
+  var select = document.getElementById("select_angle");
   for (var i = 0; i < select.children.length; i++) {
     var child = select.children[i];
     if (child.value == favorite) {
