@@ -3,11 +3,11 @@
 function setEnable2(is_enabled) {
   if(is_enabled) {
     // It's enabled, disable it
-    chrome.browserAction.setIcon({path:"icon_disabled.png"});
+    chrome.browserAction.setIcon({path:"icon48_disabled.png"});
     
   } else {
     // It's disabled
-    chrome.browserAction.setIcon({path:"icon.png"});
+    chrome.browserAction.setIcon({path:"icon48.png"});
   }
 }
 
