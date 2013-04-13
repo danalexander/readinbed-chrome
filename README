@@ -1,4 +1,4 @@
-#Read In Bed Chrome Extension
+#ReadInBed Chrome Extension
 
 ##Overview
 
@@ -15,7 +15,8 @@ This extension adds a button to your chrome browser that, when clicked, will rot
 Go to the options page by right clicking the icon and clicking “options” in order to enable/disable the extensions and
 to change the direction to rotate to when the button is clicked.
 
-**FEATURES:**
+####FEATURES:  
+
 * Enable/Disable with a single button click.  
 * Rotate 90, 180 or 270 degrees.  
 * Enjoy reading in bed!
