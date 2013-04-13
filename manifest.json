@@ -5,10 +5,6 @@
   "description": "Read In Bed",
   "version": "0.1",
 
-  "permissions": [
-    //"storage"
-  ],
-  
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -21,12 +17,11 @@
 
   "options_page": "options.html",
   "content_scripts": [{
-    "matches": ["*://*/*"], // Matches http://*/*, https://*/*
+    "matches": ["*://*/*"],
     "js": ["jquery-1.9.1.min.js", "inject_rotate.js"]
   }],
 
   "browser_action": {
-    "default_icon": "icon48.png" //,
-    // "default_popup": "popup.html"
+    "default_icon": "icon48.png"
   }
 }
