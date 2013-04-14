@@ -96,10 +96,10 @@ body
 <h2>ReadInBed Options</h2>
 
 <body>  
-  <form name="readinbedForm">
+  <form id="readinbedForm" name="readinbedForm">
     Click on the <img src="icon48.png" style="width: 16px; height: 16px;" /> <b>Read In Bed</b> icon in the Chrome toolbar to enable / disable.
-    <div id="enablebox" style="display: none;">
-      <label for="enable">Enable</label>
+    <div id="enablebox">
+      <label for="enabled">Enabled: </label>
       <input type="checkbox" name="enabled" id="enabled" value="on">
     </div>
 
@@ -141,11 +141,11 @@ body
       -->
     </div>
 
-  <br>
-  <div id="status"></div>
-  <button id="save" class="saveButton">Save</button>
+    <br>
+    <div id="status"></div>
+    <button id="save" class="saveButton">Save</button>
 
-</form>
+  </form>
 </body>
 
 <script src="jquery-1.9.1.min.js"></script>

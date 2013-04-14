@@ -1,3 +1,23 @@
+var storage = chrome.storage.local;
+
+// Detect when settings are changed
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+	for (key in changes) {
+		var changedObject = changes[key];
+		
+		// Key name: 	key
+		// Old value: 	changedObject.oldValue
+		// New value: 	changedObject.newValue
+		
+		switch(key) {
+			case "enabled":
+				setEnabled(changedObject.newValue);
+				break;
+		}
+	}
+});
+
+/*
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	if (request.method == "getLocalStorageKey") {
 		// Return a specific key
@@ -10,25 +30,42 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 		sendResponse({});
 	}
 });
+*/
 
+// Handle clicking of browser button
 chrome.browserAction.onClicked.addListener(function(tab) {
-	// Check if currently enabled or disabled
-	var is_enabled = localStorage["enabled"] == "true";
-
 	// Toggle enabled / disabled
-	localStorage["enabled"] = !is_enabled;
+	chrome.storage.local.get('enabled', function(data) {
+		chrome.storage.local.set({enabled: !data.enabled}); 
+	});
+});
 
-	// Call setEnable to set the proper icon
-	setEnable(is_enabled);
-})
-
-function setEnable(is_enabled) {
-	if(is_enabled) {
-		// It's enabled, disable it
-		chrome.browserAction.setIcon({path:"icon48_disabled.png"});
-		
-	} else {
-		// It's disabled
-		chrome.browserAction.setIcon({path:"icon48.png"});
-	}
+function setEnabled(is_enabled) {
+	// Set the appropriate icon
+	var icon_path = is_enabled ? "icon48.png" : "icon48_disabled.png";
+	
+	// Update the browser icon
+	chrome.browserAction.setIcon({path: icon_path});
 }
+
+
+
+
+
+
+// Check if initialized
+chrome.storage.local.get('initialized', function(data) {
+
+	if(!data.initialized) {
+		
+		// Enable the plugin by default (on install)?
+		var init_enabled = true;
+
+		// Set defaults
+		chrome.storage.local.set({
+			initialized: 	true,
+			enabled: 		init_enabled,
+			angle: 			"270"
+		});
+	}
+});

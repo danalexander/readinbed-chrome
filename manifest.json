@@ -2,14 +2,18 @@
   "manifest_version": 2,
 
   "name": "Read In Bed",
-  "description": "Read In Bed",
-  "version": "0.1",
+  "description": "Rotate webpages 90, 180, or 270 degrees for easy reading in bed",
+  "version": "0.2",
 
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
+  
+  "permissions": [
+    "storage"
+  ],
 
   "background":{
     "scripts":["background.js"]
@@ -22,6 +26,7 @@
   }],
 
   "browser_action": {
-    "default_icon": "icon48.png"
+    "default_icon": "icon48.png",
+    "default_title": "Read In Bed"
   }
 }

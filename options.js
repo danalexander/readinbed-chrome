@@ -1,86 +1,52 @@
-// Save this script as `options.js`
-
-function init() {
-  // Sets the default values if undefined, such as after first installing
-  localStorage["enabled"] = false;
-  localStorage["angle"] = "270";
-}
-
-function setEnable2(is_enabled) {
-  if(is_enabled) {
-    // It's enabled, disable it
-    chrome.browserAction.setIcon({path:"icon48_disabled.png"});
-    
-  } else {
-    // It's disabled
-    chrome.browserAction.setIcon({path:"icon48.png"});
-  }
-}
+// Howto get background.js page:
+// chrome.extension.getBackgroundPage();
 
 // Saves options to localStorage.
 function save_options() {
-  // Angle setting
   
-  //var select = document.getElementById("select_angle");
-  //var select = document.readinbedForm["select_angle"];
-  //var select = $("select_angle",document["readinbedForm"])
+  // Angle setting
   var select = jQuery("input[name='select_angle']").filter(':checked');
-  //var angle = select.children[select.selectedIndex].value;
   var angle = select.val();
-  localStorage["angle"] = angle;
 
   // Enabled setting
-  var enabled = $('#enabled').is(':checked');
-  localStorage["enabled"] = enabled;
+  var enabled = readinbedForm.enabled.checked;
   
-  // Call setEnable to set the proper icon
-  var enabled2 = !enabled;
-  setEnable2(enabled2);
+  // Save our settings
+  chrome.storage.local.set({"enabled": enabled, "angle": angle}, function() {
+    
+    // Update status to let user know options were saved.
+    showStatus("Options saved");
 
-  // Update status to let user know options were saved.
-  var status = document.getElementById("status");
-  status.innerHTML = "Options Saved.";
-  setTimeout(function() {
-    status.innerHTML = "";
-  }, 750);
+  });
+}
+
+function showStatus(msg) {
+  $('#status').html(msg).fadeIn().delay(750).fadeOut();
 }
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
-  // Load the setting
-  var favorite = localStorage["angle"];
-  if (!favorite) {
-    return;
-  }
+  
+  // Load the settings
+  chrome.storage.local.get(['enabled', 'angle'], function(data) {
+    
+    // Enabled checkbox
+    if(data.enabled) {
+      readinbedForm.enabled.checked = true;
+    }
 
-  // Find the radio button with the correct value, otherwise exit
-  var radiobutton = jQuery("input[name='select_angle'][value="+favorite+"]");
-  if(!radiobutton.length) {
-    return;
-  }
+    // Angle
+    //var radiobutton = jQuery("input[name='select_angle'][value="+data.angle+"]");
+    jQuery("#" + data.angle).prop('checked', true);  //jQuery("input[name='select_angle'][value="+data.angle+"]").prop('checked', true);
 
-  // Set the checked attribute
-  radiobutton.attr('checked', 'true');
-  switch(favorite) {
-    case "90":  click3(); break; 
-    case "180": click2(); break; 
-    case "270": click1(); break; 
-  }
-  // Set enabled / disabled
-  var enabled = localStorage["enabled"];
-  if(enabled=="true") { // localStorage stores true boolean as "true" string...
-    $('#enabled').attr('checked', 'true');
-  }
-
-
-  // var select = document.getElementById("select_angle");
-  // for (var i = 0; i < select.children.length; i++) {
-  //   var child = select.children[i];
-  //   if (child.value == favorite) {
-  //     child.selected = "true";
-  //     break;
-  //   }
-  // }
+    // Temporary hack
+    switch(data.angle) {
+      case "90":  click3(); break; 
+      case "180": click2(); break; 
+      case "270": click1(); break; 
+    }
+  });
 }
+
 document.addEventListener('DOMContentLoaded', restore_options);
 document.querySelector('#save').addEventListener('click', save_options);
