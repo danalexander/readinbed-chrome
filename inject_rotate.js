@@ -5,7 +5,7 @@ var resize_to_height = true;
 //var rotation = getLocalStorageKey("angle");
 
 // Check if enabled
-console.log(localStorage["angle"]);
+
 getLocalStorage(function(response) { 
 	// Check if enabled
 	if(response.data["enabled"] == "true") { 
@@ -111,7 +111,7 @@ function rotate(angle) {
 
 		case "0":
 			// Straight up, don't rotate. Do nothing!
-			
+
 			break;
 	}
 }
