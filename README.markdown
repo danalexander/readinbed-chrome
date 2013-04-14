@@ -1,13 +1,12 @@
 #ReadInBed Chrome Extension
 
+You can get the Chrome extension here: https://chrome.google.com/webstore/detail/read-in-bed/gjbepkalbfffninamijgbcniiiogcgjp
+
 ##Overview
 
-Ever get a crick in your neck from browsing Facebook in bed? 
+Rotate webpages 90, 180 or 270 degrees. Turn your screen without turning your computer!
 
-Turn your screen without turning your computer!
-
-Introducing ReadInBed, the chrome extension that allows you to orient your screen the way you want!
-With a simple click of a button, quickly rotate your screen in any direction for your viewing pleasure.
+Introducing ReadInBed, the Chrome extension that allows you to orient your screen the way you want! With a simple click of a button, quickly rotate your screen in any direction for your viewing pleasure.
 
 ##Details
 
