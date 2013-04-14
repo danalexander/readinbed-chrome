@@ -1,5 +1,11 @@
 // Save this script as `options.js`
 
+function init() {
+  // Sets the default values if undefined, such as after first installing
+  localStorage["enabled"] = false;
+  localStorage["angle"] = "270";
+}
+
 function setEnable2(is_enabled) {
   if(is_enabled) {
     // It's enabled, disable it

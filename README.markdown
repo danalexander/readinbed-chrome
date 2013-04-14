@@ -1,6 +1,7 @@
 #ReadInBed Chrome Extension
 
 You can get the Chrome extension here: https://chrome.google.com/webstore/detail/read-in-bed/gjbepkalbfffninamijgbcniiiogcgjp
+and you can view the source on Github: https://github.com/danalexander/readinbed-chrome
 
 ##Overview
 
@@ -21,3 +22,6 @@ hold shift+ctrl and press the arrow key corresponding to your desired orientatio
 * Rotate 90, 180 or 270 degrees. 
 * Switch orientation with Shift+Ctrl+[Arrow Key]
 * Enjoy reading in bed!
+
+##Note on Chrome Permissions:
+Chrome requires the "Access your data on all websites" permission in order to allow this extension to work (appending the rotation script to webpages you view). No information is collected or transmitted. 
